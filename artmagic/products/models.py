@@ -17,15 +17,15 @@ class Category(MPTTModel):
 
 
 class Product(models.Model):
-    title = models.CharField(max_length=255)
-    image_product = models.ImageField(upload_to='media/product', blank=True, null=True)
-    rate = models.FloatField()
-    price = models.DecimalField(max_digits=10, decimal_places=2)
-    manufacturer = models.CharField(max_length=255)
-    article_no = models.CharField(max_length=255)
-    availability = models.BooleanField(default=True)
-    quantity = models.PositiveIntegerField(default=0)
-    description = models.TextField()
+    title = models.CharField(max_length=255, verbose_name='Название')
+    image_product = models.ImageField(upload_to='media/product', blank=True, null=True, verbose_name='Изображение')
+    rate = models.FloatField(verbose_name='Рейтинг')
+    price = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='Цена')
+    manufacturer = models.CharField(max_length=255, verbose_name='Производитель')
+    article_no = models.CharField(max_length=255, verbose_name='Артикул №')
+    availability = models.BooleanField(default=True, verbose_name='Наличие')
+    quantity = models.PositiveIntegerField(default=0, verbose_name='Количество')
+    description = models.TextField(verbose_name='Описание')
     category = models.ForeignKey(
         Category, on_delete=models.CASCADE, related_name="products"
     )
