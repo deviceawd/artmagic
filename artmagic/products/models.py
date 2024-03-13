@@ -4,6 +4,7 @@ from mptt.models import MPTTModel, TreeForeignKey
 
 class Category(MPTTModel):
     name = models.CharField(max_length=255, unique=True)
+    image_category = models.ImageField(upload_to='media/product', blank=True, null=True)
     parent = TreeForeignKey(
         "self", on_delete=models.CASCADE, null=True, blank=True, related_name="children"
     )
@@ -17,6 +18,7 @@ class Category(MPTTModel):
 
 class Product(models.Model):
     title = models.CharField(max_length=255)
+    image_product = models.ImageField(upload_to='media/product', blank=True, null=True)
     rate = models.FloatField()
     price = models.DecimalField(max_digits=10, decimal_places=2)
     manufacturer = models.CharField(max_length=255)
